@@ -14,7 +14,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        dd('index');
+    $customers=  Customer::all();
+    // dd($customer);
+      return view('admin.index',compact('customers'));
     }
 
     /**
@@ -40,11 +42,11 @@ class CustomerController extends Controller
           'name' => 'required|max:50',
           'email' => 'required|email',
           'message' => 'required|max:50',
-          
+
       ]);
       $input =$request->except('_token');
-
-      dd($input);
+      Customer::create($input);
+      return back();
     }
 
     /**
@@ -64,9 +66,15 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($id)
     {
-        //
+        $messages=  Customer::where('id',$id)->get();
+        $message=[];
+        foreach ($messages as $message) {
+        $message=$message;
+        }
+
+          return view('admin.edit',compact('message'));
     }
 
     /**

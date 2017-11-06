@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // our Route to  store  the  customer  message
 Route::post('/form', 'CustomerController@store');
+Route::resource('/admin', 'CustomerController');

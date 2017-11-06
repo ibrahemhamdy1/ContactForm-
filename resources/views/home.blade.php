@@ -18,7 +18,7 @@
               <!-- Here WE Start our Form -->
             {!!Form::open(array('url' => '/form', 'method' => 'POST'))!!}
                 <div class="row">
- {{ csrf_field() }}
+                    {{ csrf_field() }}
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name">

@@ -2,8 +2,6 @@
 
 @section('content')
 <div class="container">
-  <h2>Striped Rows</h2>
-  <p>The .table-striped class adds zebra-stripes to a table:</p>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -29,8 +27,12 @@
         <td>{{$customer['created_at']}}</td>
         <td>{{$customer['updated_at']}}</td>
         <td><a href="{{url('admin/'.$customer['id'].'/edit')}}"><button type="button" name="button">Edit</button></a></td>
-        <td><button type="button" name="button">Delete</button></td>
+        <td>
+                                     {!! Form::open(['method'=>'DELETE','action'=>['CustomerController@destroy',$customer->id]]) !!}
+                                    {!! Form::submit('X',['class'=>'btn btn-denger']) !!}
+                                    {!! Form::close() !!}
 
+                                    </td>
           </tr>
         @endforeach
 

@@ -18,7 +18,7 @@
               <!-- Here WE Start our Form -->
             {!!Form::open(array('url' => '/form', 'method' => 'POST'))!!}
                 <div class="row">
-
+ {{ csrf_field() }}
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name">
@@ -47,7 +47,7 @@
                         <div class="form-group">
                             <label for="name">
                                 Message</label>
-                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" 
+                            <textarea name="message" id="message" class="form-control" rows="9" cols="25"
                                 placeholder="Message"></textarea>
                                 {{ $errors->login->first('message') }}
                         </div>

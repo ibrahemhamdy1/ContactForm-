@@ -46,7 +46,7 @@ class CustomerController extends Controller
       ]);
       $input =$request->except('_token');
       Customer::create($input);
-      return back();
+      return  redirect('admin');
     }
 
     /**
@@ -84,9 +84,14 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, $id)
     {
-        //
+      $input=$request->except('_method','_token');
+
+      Customer::findOrFail($id)->update($input);
+      return redirect ()->back();
+
+      dd();
     }
 
     /**
@@ -95,8 +100,10 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
-        //
+      Customer::findOrFail($id)->delete();
+      return  redirect()->back();
+
     }
 }
